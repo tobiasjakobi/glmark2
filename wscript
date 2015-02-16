@@ -124,6 +124,9 @@ def configure(ctx):
         ctx.check_cfg(package = pkg, uselib_store = uselib,
                       args = '--cflags --libs', mandatory = mandatory)
 
+    ctx.check_cfg(package='libdrm', uselib_store='libdrm', args = '--libs')
+    ctx.check_cfg(package='libdrm_exynos', uselib_store='libdrm_exynos', args = '--libs')
+
     ctx.env.append_unique('CXXFLAGS', '-Werror -Wall -Wextra -Wnon-virtual-dtor'.split(' '))
 
     # Prepend -O# and -g flags so that they can be overriden by the
@@ -150,6 +153,7 @@ def configure(ctx):
     ctx.env.GLMARK2_VERSION = VERSION
 
     ctx.env.append_unique('DEFINES', 'MALI_FBDEV=1')
+    ctx.env.LIB_ioctlsetup = 'ioctlsetup'
 
     ctx.msg("Prefix", ctx.env.PREFIX, color = 'PINK')
     ctx.msg("Data path", data_path, color = 'PINK')
