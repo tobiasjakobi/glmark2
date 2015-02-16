@@ -191,7 +191,7 @@ def check_cfg(self,*k,**kw):
 	ret=None
 	try:
 		ret=self.exec_cfg(kw)
-	except self.errors.WafError ,e:
+	except self.errors.WafError as e:
 		if'errmsg'in kw:
 			self.end_msg(kw['errmsg'],'YELLOW')
 		if Logs.verbose>1:
@@ -364,7 +364,7 @@ def check(self,*k,**kw):
 	ret=None
 	try:
 		ret=self.run_c_code(*k,**kw)
-	except self.errors.ConfigurationError ,e:
+	except self.errors.ConfigurationError as e:
 		self.end_msg(kw['errmsg'],'YELLOW')
 		if Logs.verbose>1:
 			raise

@@ -196,7 +196,7 @@ def check_dir(path):
 	if not os.path.isdir(path):
 		try:
 			os.makedirs(path)
-		except OSError ,e:
+		except OSError as e:
 			if not os.path.isdir(path):
 				raise Errors.WafError('Cannot create the folder %r'%path,ex=e)
 def def_attrs(cls,**kw):

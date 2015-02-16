@@ -15,7 +15,7 @@ def configure(conf):
 		conf.start_msg('Checking for %r (c++ compiler)'%compiler)
 		try:
 			conf.load(compiler)
-		except conf.errors.ConfigurationError ,e:
+		except conf.errors.ConfigurationError as e:
 			conf.env.revert()
 			conf.end_msg(False)
 			debug('compiler_cxx: %r'%e)

@@ -137,7 +137,7 @@ class BuildContext(Context.Context):
 					waflib.Node.Nod3=self.node_class
 					try:
 						data=cPickle.load(f)
-					except Exception ,e:
+					except Exception as e:
 						Logs.debug('build: could not pickle the build cache %s: %r'%(dbfn,e))
 					else:
 						for x in SAVED_ATTRS:
@@ -577,7 +577,7 @@ class UninstallContext(InstallContext):
 		self.uninstall.append(tgt)
 		try:
 			os.remove(tgt)
-		except OSError ,e:
+		except OSError as e:
 			if e.errno!=errno.ENOENT:
 				if not getattr(self,'uninstall_error',None):
 					self.uninstall_error=True

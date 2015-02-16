@@ -173,7 +173,7 @@ class Context(ctx):
 		try:
 			p=subprocess.Popen(cmd,**kw)
 			(out,err)=p.communicate()
-		except Exception ,e:
+		except Exception as e:
 			raise Errors.WafError('Execution failure: %s'%str(e),ex=e)
 		if not isinstance(out,str):
 			out=out.decode(sys.stdout.encoding or'iso8859-1')

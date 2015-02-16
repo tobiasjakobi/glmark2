@@ -305,7 +305,7 @@ class Node(object):
 						k='^%s$'%k
 						try:
 							accu.append(re.compile(k))
-						except Exception ,e:
+						except Exception as e:
 							raise Errors.WafError("Invalid pattern: %s"%k,e)
 				ret.append(accu)
 			return ret

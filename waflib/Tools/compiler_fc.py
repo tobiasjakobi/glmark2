@@ -19,7 +19,7 @@ def configure(conf):
 		conf.start_msg('Checking for %r (fortran compiler)'%compiler)
 		try:
 			conf.load(compiler)
-		except conf.errors.ConfigurationError ,e:
+		except conf.errors.ConfigurationError as e:
 			conf.env.revert()
 			conf.end_msg(False)
 			Logs.debug('compiler_fortran: %r'%e)
