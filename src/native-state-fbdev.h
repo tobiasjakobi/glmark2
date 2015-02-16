@@ -30,11 +30,13 @@
 #include <csignal>
 #include <cstring>
 
+struct mali_native_window;
+
 class NativeStateFBDEV : public NativeState
 {
 public:
     NativeStateFBDEV() :
-        fd(-1) {}
+        fd(-1), nwin(NULL) {}
     ~NativeStateFBDEV() { cleanup(); }
 
     bool init_display();
@@ -50,6 +52,7 @@ private:
     static volatile std::sig_atomic_t should_quit_;
     int fd;
     WindowProperties winprops;
+    mali_native_window *nwin;
 
     bool init();
     void cleanup();

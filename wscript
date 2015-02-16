@@ -149,6 +149,8 @@ def configure(ctx):
     ctx.env.append_unique('DEFINES', 'GLMARK_VERSION="%s"' % VERSION)
     ctx.env.GLMARK2_VERSION = VERSION
 
+    ctx.env.append_unique('DEFINES', 'MALI_FBDEV=1')
+
     ctx.msg("Prefix", ctx.env.PREFIX, color = 'PINK')
     ctx.msg("Data path", data_path, color = 'PINK')
     ctx.msg("Including extras", "Yes" if ctx.env.HAVE_EXTRAS else "No",
