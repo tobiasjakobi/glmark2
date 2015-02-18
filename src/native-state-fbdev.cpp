@@ -47,13 +47,17 @@
 struct video_config {
   unsigned width;
   unsigned height;
+  unsigned bpp; /* bytes per pixel */
   unsigned num_buffers;
+  unsigned use_screen;
 };
 
 extern "C" const struct video_config vconf = {
   .width = 1280,
   .height = 720,
-  .num_buffers = 3
+  .bpp = 4,
+  .num_buffers = 3,
+  .use_screen = 0
 };
 
 extern "C" void setup_hook();
