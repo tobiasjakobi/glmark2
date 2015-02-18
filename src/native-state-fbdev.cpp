@@ -58,7 +58,7 @@ extern "C" const struct video_config vconf = {
   .height = 720,
   .bpp = 4,
   .num_buffers = 3,
-  .use_screen = 0,
+  .use_screen = 1,
   .monitor_index = 0
 };
 
