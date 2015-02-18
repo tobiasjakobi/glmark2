@@ -50,6 +50,7 @@ struct video_config {
   unsigned bpp; /* bytes per pixel */
   unsigned num_buffers;
   unsigned use_screen;
+  unsigned monitor_index;
 };
 
 extern "C" const struct video_config vconf = {
@@ -57,7 +58,8 @@ extern "C" const struct video_config vconf = {
   .height = 720,
   .bpp = 4,
   .num_buffers = 3,
-  .use_screen = 0
+  .use_screen = 0,
+  .monitor_index = 0
 };
 
 extern "C" void setup_hook();
