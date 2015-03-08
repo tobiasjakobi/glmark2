@@ -287,6 +287,19 @@ EglConfig::print() const
  * GLStateEGL public methods *
  ****************************/
 
+GLStateEGL::~GLStateEGL()
+{
+  if (egl_display_ != EGL_NO_DISPLAY) {
+    eglMakeCurrent(egl_display_, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+
+    if (egl_context_ != EGL_NO_CONTEXT)
+      eglDestroyContext(egl_display_, egl_context_);
+    if (egl_surface_ != EGL_NO_SURFACE)
+      eglDestroySurface(egl_display_, egl_surface_);
+    eglTerminate(egl_display_);
+  }
+}
+
 bool
 GLStateEGL::init_display(void* native_display, GLVisualConfig& visual_config)
 {
