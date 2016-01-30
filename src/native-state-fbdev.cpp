@@ -44,13 +44,19 @@
 #endif
 
 #ifdef MALI_FBDEV
+enum e_connector_type {
+  connector_hdmi = 0,
+  connector_vga,
+  connector_other
+};
+
 struct video_config {
   unsigned width;
   unsigned height;
   unsigned bpp; /* bytes per pixel */
   unsigned num_buffers;
   unsigned use_screen;
-  unsigned monitor_index;
+  unsigned connector_type;
 };
 
 extern "C" const struct video_config vconf = {
@@ -59,7 +65,7 @@ extern "C" const struct video_config vconf = {
   .bpp = 4,
   .num_buffers = 3,
   .use_screen = 1,
-  .monitor_index = 0
+  .connector_type = connector_hdmi
 };
 
 extern "C" void setup_hook();
