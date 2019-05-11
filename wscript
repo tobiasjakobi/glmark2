@@ -89,7 +89,7 @@ def configure(ctx):
         ctx.check_cxx(lib = lib, uselib_store = uselib)
 
     # Check required functions
-    req_funcs = [('memset', 'string.h', []) ,('sqrt', 'math.h', ['m'])]
+    req_funcs = [('memset', 'string.h', []) ,('sqrtf', 'math.h', ['m'])]
     for func, header, uselib in req_funcs:
         ctx.check_cxx(function_name = func, header_name = header,
                       uselib = uselib, mandatory = True)
@@ -127,7 +127,7 @@ def configure(ctx):
     ctx.check_cfg(package='libdrm', uselib_store='libdrm', args = '--libs')
     ctx.check_cfg(package='libdrm_exynos', uselib_store='libdrm_exynos', args = '--libs')
 
-    ctx.env.append_unique('CXXFLAGS', '-Werror -Wall -Wextra -Wnon-virtual-dtor'.split(' '))
+    ctx.env.append_unique('CXXFLAGS', '-std=gnu++03 -Werror -Wall -Wextra -Wnon-virtual-dtor'.split(' '))
 
     # Prepend -O# and -g flags so that they can be overriden by the
     # CFLAGS environment variable
